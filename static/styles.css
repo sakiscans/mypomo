@@ -1,10 +1,17 @@
+
+/*global styles*/ 
+
+
+
+/*navigation + header elements */ 
 .top-left-link{
-    position: fixed; 
-    top: 10px; 
-    left: 10px; 
+    position: absolute; 
+    top: 15px; 
+    left: 15px; 
     z-index: 999; 
 }
 
+/* main content elements */ 
 
 body{
     background-color: rgba(179, 212, 245, 0.939); 
