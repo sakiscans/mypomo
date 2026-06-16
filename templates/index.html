@@ -6,16 +6,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
     <title>MyPomo</title>
 </head>
-<body>
-    <nav>   
-        <a href="/login">login</a>
-    </nav>
-</body>
+
+
+<header>
+    <div class="header-container">  
+        <a href="/login" class="login-link"> Login </a>
+    </div>
+</header>
+
 
 
 <main>
     <h1>classic timer</h1>
-    {% block content %}{% endblock %}
 </main>
+
+<footer>
+    <p>© 2024 MyPomo. sakiscans wuz here.</p>
+</footer>
 </html>
 

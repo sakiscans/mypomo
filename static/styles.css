@@ -4,11 +4,11 @@
 
 
 /*navigation + header elements */ 
-.top-left-link{
-    position: absolute; 
+.login-link{
+    position: fixed; 
     top: 15px; 
     left: 15px; 
-    z-index: 999; 
+    z-index: 1000; 
 }
 
 /* main content elements */ 
