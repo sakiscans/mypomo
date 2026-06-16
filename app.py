@@ -8,11 +8,9 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-
-
 @app.route("/login")
 def login(): 
-    pass 
+    return render_template("login.html")
 
 
 

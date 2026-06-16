@@ -1,8 +1,11 @@
 let timer; 
+
 let focusMinutes = 25; 
 let breakMinutes = 5; 
+
 let focustimeLeft = focusMinutes * 60; 
 let breaktimeLeft = breakMinutes * 60; 
+
 let isRunning = false; 
 let mode = "focus"; //default as focus. 
 //globals. i feel like this might be the ugliest thing ever. 
@@ -31,8 +34,9 @@ pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
 class Timer{
-    timer(type){
-        timer.type = type; 
+    timer(focusTime, breakTime){
+        this.focusTime = focusMinutes; 
+        this.breakTime = breakMinutes; 
         //should also initialize the focus minutes and stuff 
     }//revise this. 
 
@@ -41,7 +45,7 @@ class Timer{
          
         isRunning = true; 
         timer = setInterval(() => {
-            if (focustimeLeft > 0){
+            if (focustimeLeft > 0 && mode == "focus"){
                 focustimeLeft--; 
                 updateDisplay(); 
             }
@@ -101,9 +105,7 @@ class classicPomo extends Timer{
         super(); 
         focusMinutes = 25; 
         breakMinutes = 5; 
-
     }
-
 }
 
 class burstPomo extends Timer{
@@ -138,7 +140,11 @@ class customPomo extends Timer{
     }
 
     assignFocusMinutes(focusMinutes){
-
+        this.focusMinutes = focusMinutes; 
+    }
+    assignBreakMinutes(breakMinutes){
+        this.breakMinutes = breakMinutes; 
     }
 }
-updateDisplay(); 
+
+updateDisplay(); //final one i suppose. 
