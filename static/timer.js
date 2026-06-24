@@ -1,17 +1,4 @@
-let timer; 
 
-let focusMinutes = 25; 
-let breakMinutes = 5; 
-
-let focustimeLeft = focusMinutes * 60; 
-let breaktimeLeft = breakMinutes * 60; 
-
-let isRunning = false; 
-let mode = "focus"; //default as focus. 
-//globals. i feel like this might be the ugliest thing ever. 
-
-
-//make it compatible with html 
 const timerDisplay = document.getElementById('timer'); 
 const startButton = document.getElementById('start'); 
 const pauseButton = document.getElementById('pause'); 
@@ -22,113 +9,106 @@ const focusSelect = document.getElementById('focus-select');
 const breakSelect = document.getElementById('break-select');
 const ApplySettingsButton = document.getElementById('apply-settings'); 
 
-
-function updateDisplay(){
-    const minutes = Math.floor(timeLeft / 60); 
-    const seconds = timeLeft % 60; 
-    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-}
-
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
 class Timer{
-    timer(focusTime, breakTime){
-        this.focusTime = focusMinutes; 
-        this.breakTime = breakMinutes; 
+    constructor(focusTime, breakTime){
+        this.focusTime = focusTime; 
+        this.breakTime = breakTime; 
+
+        this.mode = "focus"; 
+        this.timeLeft = this.focusMinutes * 60; 
+        this.timer = null; 
+        this.isRunning = false; 
+
+        this.updateDisplay(); 
         //should also initialize the focus minutes and stuff 
     }//revise this. 
 
-    startTimer(){
-        if (isRunning) return; 
-         
-        isRunning = true; 
-        timer = setInterval(() => {
-            if (focustimeLeft > 0 && mode == "focus"){
-                focustimeLeft--; 
-                updateDisplay(); 
+    updateDisplay(){
+        const minutes = Math.floor(this.timeLeft / 60); 
+        const seconds = this.timeLeft % 60; 
+
+        timerDisplay.textContent = '${minutes.toString().padStart(2, "0")}:' + 
+        '${seconds.toString().padStart(2, "0")}';
+    }
+
+    tick(){
+        if (this.timeLeft > 0){
+            this.timeLeft--; 
+        } else{
+            if (this.mode == "focus"){
+                this.mode = "break"; 
+                this.timeLeft = this.breakMinutes * 60; 
+
+                alert("focus session complete! time 4 a break.");
+            } else {
+                this.mode = "focus"; 
+                this.timeLeft = this.focusMinutes * 60; 
+                alert("break session done.")
             }
-            else{
-                clearInterval(timer); 
-                isRunning = false; 
-                mode == "break"
-            }
-            }, 1000); 
         }
-        
-    breakTimer(){
-        if (mode == "break"){
-            if (breaktimeLeft > 0){
-                breaktimeLeft--; 
-                updateDisplay(); 
-            }
-            else{
-                clearInterval(timer); 
-                isRunning = false; 
-                mode == "focus"; 
-             }
-            updateDisplay(); 
-            }
-     }
+        this.updateDisplay(); 
+    }
+
+    startTimer(){
+        if (this.isRunning) return; 
+         
+        this.isRunning = true; 
+        this.timer = setInterval(() => {
+            this.tick(); 
+        }, 1000); 
+    }
 
 
     pauseTimer(){
-        clearInterval(timer); 
-        isRunning = false; 
+        clearInterval(this.timer); 
+        this.isRunning = false; 
     }
         
     resetTimer(){
-        clearInterval(timer); 
-        isRunning = false; 
-        timeLeft = 25 * 60; 
-        updateDisplay(); 
+        clearInterval(this.timer); 
+        this.isRunning = false; 
+        this.timeLeft = 25 * 60; 
+        this.updateDisplay(); 
     }
 
 
     applySettings(){
-        if (isRunning){
+        if (this.isRunning){
         alert("Cannot change timer settings while running."); 
         }
 
-        focusMinutes = Number(focusSelect.value); 
-        breakMinutes = Number(breakSelect.value); 
-
-        mode = "focus"; 
-        timeLeft = focusMinutes * 60; 
-        updateDisplay(); 
+        this.focusMinutes = focusMinutes; 
+        this.breakMinutes = breakMinutes; 
+        this.resetTimer();
     } 
 }//end bracket for class timer. 
 
 class classicPomo extends Timer{
     constructor(){
-        super(); 
-        focusMinutes = 25; 
-        breakMinutes = 5; 
+        super(25, 5); 
     }
 }
 
 class burstPomo extends Timer{
     constructor(){
-        super(); 
-        focusMinutes = 15; 
-        breakMinutes = 3; 
+        super(15, 3);
+
     }
 }
 
 class DraugeimPomo extends Timer{
     constructor(){
-        super(); 
-        focusMinutes = 52; 
-        breakMinutes = 17; 
+        super(52, 17); 
     }
 }
 
 class pomoThon extends Timer{
     constructor(){
-        super(); 
-        focusMinutes = 90; 
-        breakMinutes = 25; 
+        super(90, 25); 
     }
 }
 
