@@ -4,7 +4,6 @@ const startButton = document.getElementById('start');
 const pauseButton = document.getElementById('pause'); 
 const resetButton = document.getElementById('reset'); 
 
-
 const focusSelect = document.getElementById('focus-select'); 
 const breakSelect = document.getElementById('break-select');
 const ApplySettingsButton = document.getElementById('apply-settings'); 
@@ -85,7 +84,7 @@ class Timer{
         this.breakMinutes = breakMinutes; 
         this.resetTimer();
     } 
-}//end bracket for class timer. 
+} //end bracket for class timer. 
 
 class classicPomo extends Timer{
     constructor(){
@@ -124,6 +123,19 @@ class customPomo extends Timer{
     }
     assignBreakMinutes(breakMinutes){
         this.breakMinutes = breakMinutes; 
+    }
+}
+
+//filler 
+class _calibratePomo extends Timer{
+    constructor(){
+        super(null, null); 
+    }
+    assignFocusMinutes(FocusMinutes){
+        this.focusMinutes =  FocusMinutes; 
+    }
+    assignBreakMinutes(BreakMinutes){
+        this.breakMinutes = BreakMinutes; 
     }
 }
 
