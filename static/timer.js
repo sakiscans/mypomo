@@ -1,5 +1,5 @@
 
-const timerDisplay = document.getElementById('timer'); 
+const timerDisplay = document.getElementById('timer'); //getElementById est retrieval via id  
 const startButton = document.getElementById('start'); 
 const pauseButton = document.getElementById('pause'); 
 const resetButton = document.getElementById('reset'); 
