@@ -15,16 +15,16 @@ class Timer {
     tick(){
         if (this.timeLeft > 0){
             this.timeLeft--; 
-        }else{
-            if (this.timeLeft == 0){
-                this.mode = "focus"; 
-                this.mode = "break";
-                this.timeLeft = this.breakMinutes * 60; 
-
-            }else{
-                this.mode = "focus"; 
-                this.timeLeft = this.focusMinutes * 60; 
-            }
+        } 
+        
+        if (this.timeLeft == 0){
+                if (this.mode == "focus"){
+                    this.mode = "break"; 
+                    this.timeLeft = this.breakMinutes * 60; 
+                } else{
+                    this.mode = "focus"; 
+                    this.timeLeft = this.focusMinutes * 60; 
+                }
         }
     }
 

@@ -26,6 +26,34 @@ test("tick decreases by one second", () => {
 
 }); 
 
+test("tick for focus mode general", () => {
+    const timer = new Timer(25, 5); 
+    timer.mode = "focus"; 
+    timer.timeLeft = 0; 
+    assert.equal(timer.mode, "focus"); 
+})
+
+test("tick for break mode general", () => {
+    const timer = new Timer(25,5); 
+    timer.mode = "break"; 
+    timer.timeLeft = 0; 
+    assert.equal(timer.mode, "break"); 
+    })
+
+test("tick focusminutes converted to seconds accuracy", () => {
+    const timer = new Timer(25, 5); 
+    assert.equal(timer.timeLeft, 25 * 60); 
+}); 
+
+test("tick breakminutes timeleft accuracy", () => {
+    const timer = new Timer(25, 5); 
+    timer.timeLeft = 1; 
+    timer.tick(); 
+
+    assert.equal(timer.mode, "break"); 
+    assert.equal(timer.timeLeft, 5 * 60); 
+}); 
+
 test("tick timeleft == 0 switches to break modde", () =>{
     const timer = new Timer(25, 5); 
     timer.timeLeft = 0; 
