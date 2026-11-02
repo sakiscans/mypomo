@@ -42,3 +42,11 @@ test("setinterval starts timer", (t) => {
     assert.equal(timer.isRunning, true); 
     assert.notEqual(timer.timer, null); 
 }); 
+
+test("pausetimer pauses timer", () => {
+    const timer = new Timer(25,5); 
+    timer.startTimer(); 
+    timer.pauseTimer(); 
+    assert.equal(timer.isRunning, false); 
+    assert.equal(timer.timer, null); 
+}); 
