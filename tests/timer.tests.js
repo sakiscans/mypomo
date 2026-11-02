@@ -66,3 +66,12 @@ test("applysettings changes focus and break minutes", () => {
     assert.equal(timer.focusMinutes, 30); 
     assert.equal(timer.breakMinutes, 10); 
 }); 
+
+test("applysettings maintains setting while running", () => {
+    const timer = new Timer(25, 5); 
+    timer.startTimer(); 
+    timer.pauseTimer(); 
+    timer.applySettings(30, 10); 
+    assert.equal(timer.focusMinutes, 30); 
+    assert.equal(timer.breakMinutes, 10); 
+}); 
