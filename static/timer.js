@@ -142,3 +142,7 @@ class _calibratePomo extends Timer{
 }
 
 updateDisplay(); //final one i suppose. 
+
+if (typeof module != 'undefined'){
+    module.exports = {Timer}; 
+}
