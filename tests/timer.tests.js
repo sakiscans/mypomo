@@ -25,4 +25,19 @@ test("tick timeleft == 0 switches to break modde", () =>{
     timer.tick(); 
     assert.equal(timer.mode, "break"); 
 
+}); 
+
+test("tick timeleft stays focused on focus mode.", () => {
+    const timer = new Timer(25,5); 
+    timer.mode = "focus"; 
+    timer.tick(); 
+    assert.equal(timer.mode, "focus"); 
+
+}); 
+
+test("setinterval starts timer", () => {
+    const timer = new Timer(25, 5); 
+    timer.startTimer(); 
+    assert.equal(timer.isRunning, true); 
+
 })
