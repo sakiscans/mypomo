@@ -38,7 +38,7 @@ test("tick timeleft stays focused on focus mode.", () => {
 test("setinterval starts timer", (t) => {
     const timer = new Timer(25, 5); 
     t.after(() => timer.pauseTimer()); 
-    timer.startTimer(); 
+    timer.startTimer();
     assert.equal(timer.isRunning, true); 
-    assert.notequal(timer.timer, null); 
+    assert.notEqual(timer.timer, null); 
 }); 
