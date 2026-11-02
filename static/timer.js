@@ -6,16 +6,18 @@ const resetButton = document.getElementById('reset');
 
 const focusSelect = document.getElementById('focus-select'); 
 const breakSelect = document.getElementById('break-select');
-const ApplySettingsButton = document.getElementById('apply-settings'); 
+const applySettingsButton = document.getElementById('apply-settings'); 
 
-startButton.addEventListener('click', startTimer);
-pauseButton.addEventListener('click', pauseTimer);
-resetButton.addEventListener('click', resetTimer);
+const timer = new Timer(25,5); //guest settings 
+
+startButton.addEventListener('click', () => timer.startTimer);
+pauseButton.addEventListener('click', () => timer.pauseTimer);
+resetButton.addEventListener('click', () => timer.resetTimer);
 
 class Timer{
-    constructor(focusTime, breakTime){
-        this.focusTime = focusTime; 
-        this.breakTime = breakTime; 
+    constructor(focusMinutes, breakMinutes){
+        this.focusMinutes = focusMinutes; 
+        this.breakMinutes = breakMinutes; 
 
         this.mode = "focus"; 
         this.timeLeft = this.focusMinutes * 60; 
