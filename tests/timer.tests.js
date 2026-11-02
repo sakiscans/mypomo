@@ -11,6 +11,13 @@ test("starts in focus mode with guest duration", () => {
 
 }); 
 
+test("starts in focus mode for alternative duration", () => {
+    const timer = new Timer(30, 10); 
+    assert.equal(timer.mode, "focus");
+    assert.equal(timer.timeLeft, 30 * 60);
+});
+
+
 test("tick decreases by one second", () => {
     const timer = new Timer(25, 5); 
     timer.timeLeft = 2; 
@@ -75,3 +82,11 @@ test("applysettings maintains setting while running", () => {
     assert.equal(timer.focusMinutes, 30); 
     assert.equal(timer.breakMinutes, 10); 
 }); 
+
+//test("applysettings does not change while running", () => {
+ //   const timer = new Timer(25, 5); 
+ //   timer.startTimer(); 
+ //   timer.applySettings(30, 10); 
+//    assert.equal(timer.focusMinutes, 25); 
+//    assert.equal(timer.breakMinutes, 5);
+//});  run into a logical contradiction here will revisit. 
