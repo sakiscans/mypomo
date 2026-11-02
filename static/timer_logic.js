@@ -11,7 +11,7 @@ class Timer {
         this.isRunning = false; 
 
     }
-    
+
     tick(){
         if (this.timeLeft > 0){
             this.timeLeft--; 
@@ -31,7 +31,7 @@ class Timer {
     startTimer(){
         if (this.isRunning) return; 
         this.isRunning = true; 
-        this.timer - setInterval(() => {
+        this.timer = setInterval(() => {
             this.tick();   
         }, 1000); 
     }
