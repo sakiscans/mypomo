@@ -11,6 +11,7 @@ class Timer {
         this.isRunning = false; 
 
     }
+    
     tick(){
         if (this.timeLeft > 0){
             this.timeLeft--; 
