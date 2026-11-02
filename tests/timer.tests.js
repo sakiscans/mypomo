@@ -1,6 +1,6 @@
 const { test } = require("node:test"); 
 const assert = require("node:assert/strict"); 
-const {Timer} = require("../static/timer_tentative.js")
+const {Timer} = require("../static/timer_logic.js")
 
 test("starts in focus mode with guest duration", () => {
     const timer = new ClassicPomo(25, 5); 
