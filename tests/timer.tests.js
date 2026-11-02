@@ -18,3 +18,11 @@ test("tick decreases by one second", () => {
     assert.equal(timer.timeLeft, 1); 
 
 }); 
+
+test("tick timeleft == 0 switches to break modde", () =>{
+    const timer = new Timer(25, 5); 
+    timer.timeLeft = 0; 
+    timer.tick(); 
+    assert.equal(timer.mode, "break"); 
+
+})
