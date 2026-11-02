@@ -50,3 +50,12 @@ test("pausetimer pauses timer", () => {
     assert.equal(timer.isRunning, false); 
     assert.equal(timer.timer, null); 
 }); 
+
+test("reset timer rests to focusmode", () => {
+    const timer = new Timer(25,5); 
+    timer.startTimer(); 
+    timer.resetTimer(); 
+
+    assert.equal(timer.mode, "focus"); 
+    assert.equal(timer.timeLeft, 25 *60); 
+}); 
