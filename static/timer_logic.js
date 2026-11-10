@@ -88,5 +88,10 @@ class customPomo extends Timer{
     }
 }
 if (typeof module !== "undefined"){
-    module.exports = {Timer, classicPomo, burstPomo, draugeimPomo, pomoThon, customPomo}; 
+    module.exports = {Timer, 
+                    classicPomo, 
+                    burstPomo, 
+                    draugeimPomo, 
+                    pomoThon, 
+                    customPomo}; 
 }
