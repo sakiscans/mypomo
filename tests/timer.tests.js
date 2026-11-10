@@ -8,7 +8,6 @@ test("starts in focus mode with guest duration", () => {
     assert.equal(timer.mode, "focus"); 
     assert.equal(timer.timeLeft, 25 * 60); 
     assert.equal(timer.isRunning, false); 
-
 }); 
 
 test("starts in focus mode for alternative duration", () => {

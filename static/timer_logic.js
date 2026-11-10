@@ -1,5 +1,6 @@
 
 
+//this is the actual debugged logic, just add buttons + timer variants
 class Timer {
     constructor(focusMinutes, breakMinutes){
         this.focusMinutes = focusMinutes; 
@@ -57,6 +58,35 @@ class Timer {
     }
 }
 
+class classicPomo extends Timer{
+    constructor(){
+        super(25, 5); 
+    }
+}
+
+class burstPomo extends Timer{
+    constructor(){
+        super(15, 3); 
+    }
+}
+
+class draugeimPomo extends Timer{
+    constructor(){
+        super(52, 17); 
+    }
+}
+
+class pomoThon extends Timer{
+    constructor(){
+        super(90, 25); 
+    }
+}
+
+class customPomo extends Timer{
+    constructor(focusMinutes, breakMinutes){
+        super(focusMinutes, breakMinutes); 
+    }
+}
 if (typeof module !== "undefined"){
-    module.exports = {Timer}; 
+    module.exports = {Timer, classicPomo, burstPomo, draugeimPomo, pomoThon, customPomo}; 
 }
