@@ -9,7 +9,6 @@ class Timer {
         this.timeLeft = this.focusMinutes * 60; 
         this.timer = null; 
         this.isRunning = false; 
-
     }
 
     tick(){
@@ -24,7 +23,7 @@ class Timer {
                 } else{
                     this.mode = "focus"; 
                     this.timeLeft = this.focusMinutes * 60; 
-                }
+            }
         }
     }
 
@@ -49,14 +48,15 @@ class Timer {
     }
 
     applySettings(focusMinutes, breakMinutes){
-        if (this.isRunning) return; 
-
-        this.focusMinutes = focusMinutes; 
-        this.breakMinutes = breakMinutes; 
-        this.resetTimer(); 
+        if (this.isRunning) return "Cannot change timer settings while running"; 
+        else{
+            this.focusMinutes = focusMinutes; 
+            this.breakMinutes = breakMinutes; 
+            this.resetTimer(); 
+        }
     }
 }
 
 if (typeof module !== "undefined"){
-    module.exports = { Timer}; 
+    module.exports = {Timer}; 
 }

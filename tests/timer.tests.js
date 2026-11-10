@@ -62,7 +62,15 @@ test("tick timeleft == 0 switches to break modde", () =>{
 
 }); 
 
-test("tick timeleft stays focused on focus mode.", () => {
+test("tick timeleft == 0 switches to focus mode", () => {
+    const timer = new Timer(25, 5); 
+    timer.mode = "break"; 
+    timer.timeLeft = 0; 
+    timer.tick(); 
+    assert.equal(timer.mode, "focus"); 
+})
+
+test("tick timeleft stays on focus mode while time > 0.", () => {
     const timer = new Timer(25,5); 
     timer.mode = "focus"; 
     timer.tick(); 
@@ -90,7 +98,6 @@ test("reset timer rests to focusmode", () => {
     const timer = new Timer(25,5); 
     timer.startTimer(); 
     timer.resetTimer(); 
-
     assert.equal(timer.mode, "focus"); 
     assert.equal(timer.timeLeft, 25 *60); 
 }); 
@@ -111,10 +118,12 @@ test("applysettings maintains setting while running", () => {
     assert.equal(timer.breakMinutes, 10); 
 }); 
 
-//test("applysettings does not change while running", () => {
- //   const timer = new Timer(25, 5); 
- //   timer.startTimer(); 
- //   timer.applySettings(30, 10); 
-//    assert.equal(timer.focusMinutes, 25); 
-//    assert.equal(timer.breakMinutes, 5);
-//});  run into a logical contradiction here will revisit. 
+test("cannot change applysettings while timer is running", () =>{
+    const timer = new Timer(25, 5); 
+    timer.startTimer();
+    timer.tick();
+    timer.applySettings(30, 10); 
+    timer.pauseTimer(); 
+    assert.equal(timer.focusMinutes, 25); 
+    assert.equal(timer.breakMinutes, 5); 
+})
