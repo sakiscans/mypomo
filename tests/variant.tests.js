@@ -1,3 +1,5 @@
 const { test } = require("node:test"); 
 const assert = require("node:assert/strict"); 
-const {Timer} = require("../static/timer_logic.js")
+const {Timer, pomoThon, customPomo, draugeimPomo, classicPomo, burstPomo} = require("../static/timer_logic.js")
+
+test("customPomo")
