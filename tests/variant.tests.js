@@ -12,7 +12,7 @@ describe("customPomo", () => {
 
     for (const [focusMinutes, breakMinutes] of validCases) {
         it(`accepts ${focusMinutes} focus and ${breakMinutes} break minutes`, () => {
-            const timer = new customPomo(25, 5);
+            const timer = new customPomo(focusMinutes, breakMinutes);
 
             assert.equal(timer.focusMinutes, focusMinutes);
             assert.equal(timer.breakMinutes, breakMinutes);
