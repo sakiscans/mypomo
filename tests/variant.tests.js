@@ -7,10 +7,19 @@ const {Timer, pomoThon, customPomo, draugeimPomo, classicPomo, burstPomo} = requ
 
 describe("customPomo", () => {
     const validCases = [
-        [25,5],
+        [25,5], //classic
+        [15, 3], //burst
+        [52, 17], //draugeim
+        [90, 25],//pomoThon
+
+
+
     ]; 
 
-    const invalidCases =[]; 
+    const invalidCases =[
+        [-4, 5], 
+        [20, 25],
+    ]; 
 
     for (const [focusMinutes, breakMinutes] of validCases) {
         it(`accepts ${focusMinutes} focus and ${breakMinutes} break minutes`, () => {
@@ -21,5 +30,5 @@ describe("customPomo", () => {
         });
     }
 
-    
+
 });
