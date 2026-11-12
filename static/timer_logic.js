@@ -84,22 +84,25 @@ class pomoThon extends Timer{
 
 class customPomo extends Timer{
     constructor(focusMinutes, breakMinutes){
-        super(focusMinutes, breakMinutes); 
-
-        //pseudocode stuff for now; 
-        // focus mins cannot be less than 1, 
-        //break mins cannot be less than 1, 
-        //break mins cannot be greater than focus mins. 
-        //break mins must be at most half of the focus minutes. 
-
-        
-        if (breakMinutes > focusMinutes){
-            throw new Error("Break minutus cannot be greater than focus minutes.")
-        }
-
+        super(focusMinutes, breakMinutes);
+        this.helperCustom(focusMinutes, breakMinutes); 
         
     }
+
+helperCustom(focusMinutes, breakMinutes){
+    const rules = [
+        {valid: focusMinutes > 1, customMessage: "Focus minutes must be at least 1."}, 
+        {valid: breakMinutes > 1, customMessage: "Break minutes must be at least 1."}, 
+        {valid: breakMinutes <= focusMinutes/2}, 
+        {valid: breakMinutes < focusMinutes, customMessage: "Break minutes cannot be greater than focus minutes."}
+    ]; 
+
+    for (const rule of rules){
+        if (!rule.valid) throw new Error(rule.customMessage); 
+        }
+    }
 }
+
 if (typeof module !== "undefined"){
     module.exports = {Timer, 
                     classicPomo, 
