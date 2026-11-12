@@ -89,11 +89,11 @@ class customPomo extends Timer{
         
     }
 
-helperCustom(focusMinutes, breakMinutes){
+static helperCustom(focusMinutes, breakMinutes){
     const rules = [
         {valid: focusMinutes > 1, customMessage: "Focus minutes must be at least 1."}, 
         {valid: breakMinutes > 1, customMessage: "Break minutes must be at least 1."}, 
-        {valid: breakMinutes <= focusMinutes/2}, 
+        {valid: breakMinutes <= focusMinutes/2, customMessage: "Error"},
         {valid: breakMinutes < focusMinutes, customMessage: "Break minutes cannot be greater than focus minutes."}
     ]; 
 
@@ -109,5 +109,6 @@ if (typeof module !== "undefined"){
                     burstPomo, 
                     draugeimPomo, 
                     pomoThon, 
-                    customPomo}; 
+                    customPomo, 
+                    helperCustom}; 
 }
