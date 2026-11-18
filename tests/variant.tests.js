@@ -45,3 +45,23 @@ describe("customPomo", () => {
     }
 
 } );
+
+describe("preset_ variants", () => {
+    const presets = [
+        [classicPomo, 25, 5], 
+        [burstPomo, 15, 3], 
+        [draugeimPomo, 52, 17], 
+        [pomoThon, 90, 25], 
+    ];
+
+    for (const[Variant, focusMinutes, breakMinnutes] of presets){
+        it(`${Variant.name} has the correct settings`, () => {
+            const timer = new Variant(); 
+
+            assert.equal(timer.focusMinutes, focusMinutes); 
+
+
+        });
+    }
+}
+); 
