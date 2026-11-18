@@ -78,8 +78,6 @@ describe("customPomo preset matching", () => {
     for (const [focusMinutes, breakMinutes, expectedVariant] of cases){
         it(`matches ${focusMinutes} focus and ${breakMinutes} break to ${expectedVariant}`, () => {
             const timer = new customPomo(focusMinutes, breakMinutes); 
-
-
         }); 
     } 
 
@@ -88,6 +86,6 @@ describe("customPomo preset matching", () => {
         timer.applySettings(15, 3); 
         assert.equal(timer.getPresetName(), "burstPomo"); 
 
- }); 
+    }); 
 
 }); 
