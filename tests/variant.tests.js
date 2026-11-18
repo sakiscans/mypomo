@@ -11,12 +11,18 @@ describe("customPomo", () => {
         [15, 3], //burst
         [52, 17], //draugeim
         [90, 25],//pomoThon
-        [800, 10] //extreme just checking logic. hopefully nobody does this. 
+        [800, 10], //extreme just checking logic. hopefully nobody does this. 
+        [2, 1], //minimum break
+        [20, 10], // break is extactly half of focus
     ]; 
 
     const invalidCases =[
         [-4, 5], //negative int focus + break larger than fouus. 
         [20, 25], //break larger than focus
+        [0, 1], // zero focus
+        [25, 0], //zero break 
+        [21, -1], //negative brea 
+        [20, 11], // break over half of focus. 
     ]; 
 
     for (const [focusMinutes, breakMinutes] of validCases) {
