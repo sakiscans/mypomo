@@ -102,11 +102,19 @@ static helperCustom(focusMinutes, breakMinutes){
         }
     }
     getPresetName() {
-        // if exact ratio ==prexisting prset 
-        //return name of preset,  + message
-        //else return "custom"; 
-    }
-}
+        const presets = [
+            {focus: 25, break: 5, name: "classicPomo"},
+            {focus: 15, break: 3, name: "burstPomo"}, 
+            {focus: 52, break: 17, name: "draugeimPomo"}, 
+            {focus: 90, break: 25, name: "pomoThon"}, 
+        ];
+
+       const match = presets.find(preset => preset.focus === this.focusMinutes && 
+        preset.break === this.breakMinutes);
+        return match ? match.name : null;
+
+        }
+} 
 
 if (typeof module !== "undefined"){
     module.exports = {Timer, 
