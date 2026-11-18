@@ -85,7 +85,7 @@ class pomoThon extends Timer{
 class customPomo extends Timer{
     constructor(focusMinutes, breakMinutes){
         super(focusMinutes, breakMinutes);
-        this.helperCustom(focusMinutes, breakMinutes); 
+        customPomo.helperCustom(focusMinutes, breakMinutes); 
         
     }
 
