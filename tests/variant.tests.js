@@ -85,7 +85,7 @@ describe("customPomo preset matching", () => {
 
     it("updates match when appropriate settings change", () => {
         const timer = new customPomo(25, 5); 
-        timer.assertSettings(15, 3); 
+        timer.applySettings(15, 3); 
         assert.equal(timer.getPresetName(), "Burst Pomo"); 
 
  }); 
