@@ -101,6 +101,11 @@ static helperCustom(focusMinutes, breakMinutes){
         if (!rule.valid) throw new Error(rule.customMessage); 
         }
     }
+    getPresetName() {
+        // if exact ratio ==prexisting prset 
+        //return name of preset,  + message
+        //else return "custom"; 
+    }
 }
 
 if (typeof module !== "undefined"){
