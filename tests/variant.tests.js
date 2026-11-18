@@ -54,7 +54,7 @@ describe("preset_ variants", () => {
         [pomoThon, 90, 25], 
     ];
 
-    for (const[Variant, focusMinutes, breakMinnutes] of presets){
+    for (const[Variant, focusMinutes, breakMinutes] of presets){
         it(`${Variant.name} has the correct settings`, () => {
             const timer = new Variant(); 
 
@@ -65,3 +65,29 @@ describe("preset_ variants", () => {
     }
 }
 ); 
+
+describe("customPomo preset matching", () => {
+    const cases = [
+        [25, 5, "classicPomo"], 
+        [15, 3, "burstPomo"], 
+        [52, 17, "draugeimPomo"], 
+        [90, 25, "pomoThon"], 
+        [20, 10, "customPomo"], 
+        [800, 10, "customPomo"],
+    ]; 
+    for (const [focusMinutes, breakMinutes, expectedVariant] of cases){
+        it(`matches ${focusMinutes} focus and ${breakMinutes} break to ${expectedVariant}`, () => {
+            const timer = new customPomo(focusMinutes, breakMinutes); 
+
+
+        }); 
+    } 
+
+    it("updates match when appropriate settings change", () => {
+        const timer = new customPomo(25, 5); 
+        timer.assertSettings(15, 3); 
+        assert.equal(timer.getPresetName(), "Burst Pomo"); 
+
+ }); 
+
+}); 
