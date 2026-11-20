@@ -48,15 +48,17 @@ class Timer {
         this.timeLeft = this.focusMinutes * 60; 
     }
 
-    applySettings(focusMinutes, breakMinutes){
-        if (this.isRunning) return "Cannot change timer settings while running"; 
-        else{
-            this.focusMinutes = focusMinutes; 
-            this.breakMinutes = breakMinutes; 
-            this.resetTimer(); 
-        }
+    applySettings(focusMinutes, breakMinutes){ //i completely fuced this one up so we will revisit it. 
+        if (this.isRunning) 
+            {return "Cannot change timer settings while running";}
+
+        customPomo.helperCustom(focusMinutes, breakMinutes); 
+        super.applySettings(focusMinutes, breakMinutes); 
+            
+    } 
+        
     }
-}
+
 
 class classicPomo extends Timer{
     constructor(){
